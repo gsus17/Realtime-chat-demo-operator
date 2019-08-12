@@ -1,22 +1,26 @@
-.login-content { height: auto !important;}
+.login-content {
+  height: auto !important;
+}
 
-.fxMargin { margin: 16px;}
+.version-app {
+  color: grey;
+  font-size: 9px;
+  margin: 16px 0;
+}
 
-.version-app { color: grey;  font-size: 9px;  margin: 16px 0;}
+.progress-bar-container {
+  padding-bottom: 8px;
+}
 
-.progress-bar-container {  padding-bottom: 8px; }
-
-.selection-section { padding-top: 40px;}
+.selection-section {
+  padding-top: 40px;
+}
 
 .principal-label {
   margin-bottom: 0 !important;
 }
 
-.password-recovery-container{
-  margin: 16px 0 0 0;
-}
-
-.fx-margin{
+.fx-margin {
   padding: 8px;
 }
 

@@ -1,34 +1,83 @@
-<div fxFlexFill fxLayout="column" class="containers" fxLayoutAlign="center center">
-  <div fxLayout="column" fxLayoutAlign="center center">
-    <div fxFlex fxLayout="row" fxLayoutAlign="center center">
+<div fxFlexFill
+     fxLayout="column"
+     class="containers"
+     fxLayoutAlign="center center">
+  <div fxLayout="column"
+       fxLayoutAlign="center center">
+    <div fxFlex
+         fxLayout="row"
+         fxLayoutAlign="center center">
       <span class="mat-title">Realtime chat demo</span>
     </div>
-    <div fxHide.xs="true" fxFlex fxLayout="row" fxLayoutAlign="center center">
+    <div fxHide.xs="true"
+         fxFlex
+         fxLayout="row"
+         fxLayoutAlign="center center">
       <span class="mat-title principal-label"></span>
     </div>
   </div>
 
-  <mat-card class="login-content" fxLayout="column" fxLayoutAlign="center flex">
+  <mat-card class="login-content"
+            fxLayout="column">
     <div class="progress-bar-container">
-      <mat-progress-bar mode="indeterminate" *ngIf="progressLinear"></mat-progress-bar>
+      <mat-progress-bar mode="indeterminate"
+                        *ngIf="progressLinear"></mat-progress-bar>
     </div>
 
-    <form class="example-form" fxLayout="column">
-      <div fxFlex fxLayout="row" class="fx-margin">
-        <div *ngFor="let message of messages">{{message.message}}</div>
+    <div fxLayout="column">
+      <div>
+        <img class="avatar"
+             src="{{user.avatar}}"
+             alt="avatar">
       </div>
 
-      <mat-form-field fxFlex fxLayout="row">
-        <textarea fxFlex matInput placeholder="Textarea"></textarea>
-      </mat-form-field>
-    </form>
+      <div class="message-general-container"
+           id="chat-container">
+        <div *ngFor="let message of messages"
+             class="fx-margin"
+             fxLayout="column">
+          <div fxLayout="column"
+               fxLayoutAlign="{{messageSendByMe(message) ? 'center end' : 'center start'}}"
+               class="message-container">
+            <div class="user-name-container">
+              <span class="user-name"
+                    [ngClass]="{'right': messageSendByMe(message), 'left': !messageSendByMe(message)}">{{message.name}}</span>
+            </div>
+            <span class="chat-message">{{message.message}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div fxFlex
+           fxLayout="row"
+           fxLayoutAlign="space-between center">
+        <mat-form-field fxFlex="85%"
+                        class="example-full-width">
+          <input matInput
+                 [(ngModel)]="newMessage"
+                 placeholder="Escriba su mensaje"
+                 value="mensaje"
+                 (keyup.enter)="sendMessage()">
+        </mat-form-field>
+
+        <div>
+          <button mat-fab
+                  color="primary">
+            <mat-icon>send</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
   </mat-card>
 
   <div class="fxMargin">
     <span class="version-app">Version 0.0.1</span>
   </div>
 
-  <div fxLayout="row" fxLayoutAlign="center center">
-    <button mat-raised-button color="accent" (click)="logout()">Salir</button>
+  <div fxLayout="row"
+       fxLayoutAlign="center center">
+    <button mat-raised-button
+            color="accent"
+            (click)="logout()">Salir</button>
   </div>
 </div>
