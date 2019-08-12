@@ -1,0 +1,34 @@
+<div fxFlexFill fxLayout="column" class="containers" fxLayoutAlign="center center">
+
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <div fxFlex fxLayout="row" fxLayoutAlign="center center">
+      <span class="mat-title">Realtime chat demo</span>
+    </div>
+    <div fxHide.xs="true" fxFlex fxLayout="row" fxLayoutAlign="center center">
+      <span class="mat-title principal-label"></span>
+    </div>
+  </div>
+
+  <mat-card class="login-content" fxLayout="column" fxLayoutAlign="center flex">
+    <div class="progress-bar-container">
+      <mat-progress-bar mode="indeterminate" *ngIf="progressLinear"></mat-progress-bar>
+    </div>
+
+    <mat-card-subtitle>
+      <span>Ingresa con tu cuenta favorita</span>
+    </mat-card-subtitle>
+
+    <form class="example-form" fxLayout="column">
+      <div fxFlex fxLayout="row" class="fx-margin">
+        <button fxFlex mat-raised-button color="primary" (click)="googleLogin()">Google</button>
+      </div>
+      <div fxFlex fxLayout="row" class="fx-margin">
+        <button fxFlex mat-raised-button color="accent" (click)="twitterLogin()">Twitter</button>
+      </div>
+    </form>
+  </mat-card>
+
+  <div class="fxMargin">
+    <span class="version-app">Version 0.0.1</span>
+  </div>
+</div>

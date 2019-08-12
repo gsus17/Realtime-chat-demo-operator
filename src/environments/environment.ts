@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: {
+    apiKey: 'AIzaSyConxyWARFIaU2CTdTZftRDLUKGX3CsHPE',
+    authDomain: 'realtime-chat-demo.firebaseapp.com',
+    databaseURL: 'https://realtime-chat-demo.firebaseio.com',
+    projectId: 'realtime-chat-demo',
+    storageBucket: '',
+    messagingSenderId: '1006699949980',
+    appId: '1:1006699949980:web:36c78baa1f4d1b46'
+  }
 };
 
 /*
