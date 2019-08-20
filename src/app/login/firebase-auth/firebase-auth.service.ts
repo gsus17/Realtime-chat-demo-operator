@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
-import { User } from './interfaces/user';
+import { User } from '../../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +17,15 @@ export class FirebaseAuthService {
    */
   public googleLogin() {
     return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+  }
+
+  /**
+   * Return the current state of login.
+   */
+  public isUserLogged(): boolean {
+    const currenUser = this.afAuth.auth.currentUser;
+    const response = currenUser ? true : false;
+    return response;
   }
 
   /**

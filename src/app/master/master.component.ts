@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FirebaseDBService } from '../firebase-db.service';
-import { FirebaseAuthService } from '../firebase-auth.service';
+import { FirebaseDBService } from './firebase-db/firebase-db.service';
+import { FirebaseAuthService } from '../login/firebase-auth/firebase-auth.service';
 import { Router } from '@angular/router';
 import { Message } from '../interfaces/message';
 import { User } from '../interfaces/user';
@@ -25,7 +25,10 @@ export class MasterComponent implements OnInit {
     private firebaseAuthService: FirebaseAuthService,
     private router: Router) { }
 
-  ngOnInit() {
+  /**
+   * Inicializacion del componente.
+   */
+  public ngOnInit() {
     this.user = this.firebaseAuthService.geUser();
     this.element = document.getElementById('chat-container');
     this.loadMessages();

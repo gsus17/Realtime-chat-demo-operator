@@ -11,9 +11,10 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
-import { FirebaseAuthService } from './firebase-auth.service';
+import { FirebaseAuthService } from './login/firebase-auth/firebase-auth.service';
 import { RouterModule } from '@angular/router';
-import { FirebaseDBService } from './firebase-db.service';
+import { FirebaseDBService } from './master/firebase-db/firebase-db.service';
+import { AuthGuardService } from './auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { FirebaseDBService } from './firebase-db.service';
     AngularFirestoreModule,
     AngularFireAuthModule
   ],
-  providers: [FirebaseAuthService, FirebaseDBService],
+  providers: [FirebaseAuthService, FirebaseDBService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

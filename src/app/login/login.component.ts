@@ -1,5 +1,5 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { FirebaseAuthService } from '../firebase-auth.service';
+import { FirebaseAuthService } from './firebase-auth/firebase-auth.service';
 import { Router } from '@angular/router';
 import { User } from '../interfaces/user';
 
