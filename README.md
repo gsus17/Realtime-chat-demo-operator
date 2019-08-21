@@ -18,7 +18,7 @@ Real time chat demo operators is a proyect to simulate a realtime chat with mult
 * Firebase Authentication with Google and Twitter accounts.
 
 # Demo
-* https://gsus17.github.io/Realtime-chat-demo-operator/
+* https://operator-realtime-chat-demo.firebaseapp.com
 
 # Quickstart
 Run `npm install` 
