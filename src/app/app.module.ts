@@ -15,12 +15,18 @@ import { FirebaseAuthService } from './login/firebase-auth/firebase-auth.service
 import { RouterModule } from '@angular/router';
 import { FirebaseDBService } from './master/firebase-db/firebase-db.service';
 import { AuthGuardService } from './auth-guard.service';
+import { ChatWindowComponent } from './master/chat-window/chat-window.component';
+import { ChatContactsComponent } from './master/chat-contacts/chat-contacts.component';
+import { NoimagePipe } from './pipes/noimage.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MasterComponent
+    MasterComponent,
+    ChatWindowComponent,
+    ChatContactsComponent,
+    NoimagePipe
   ],
   imports: [
     BrowserModule,

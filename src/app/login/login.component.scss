@@ -20,10 +20,6 @@
   margin-bottom: 0 !important;
 }
 
-.fx-margin {
-  padding: 8px;
-}
-
 // Mediaquery para formulario de una sola columna en xs.
 @media (min-width: 599px) {
   .login-content { min-width: 500px;  height: auto !important;}

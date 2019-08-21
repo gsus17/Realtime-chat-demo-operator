@@ -11,17 +11,12 @@ import { User } from '../interfaces/user';
   styleUrls: ['./master.component.scss']
 })
 export class MasterComponent implements OnInit {
-
-  public messages: any[] = [];
-
-  public newMessage = '';
-
-  public user: User = null;
-
-  private element: HTMLElement;
+  public userAuthenticate: User = null;
+  public openedSideBar = true;
+  public openedSideBarMode = 'side';
+  public userSelected = null;
 
   constructor(
-    private firebaseDb: FirebaseDBService,
     private firebaseAuthService: FirebaseAuthService,
     private router: Router) { }
 
@@ -29,49 +24,14 @@ export class MasterComponent implements OnInit {
    * Inicializacion del componente.
    */
   public ngOnInit() {
-    this.user = this.firebaseAuthService.geUser();
-    this.element = document.getElementById('chat-container');
-    this.loadMessages();
+    this.userAuthenticate = this.firebaseAuthService.geUser();
   }
 
   /**
-   * Load messages.
+   * changeUserSelected
    */
-  public loadMessages() {
-    console.log(`${MasterComponent.name}::loadMessages`);
-
-    this.firebaseDb.getMessages()
-      .subscribe((response) => {
-        this.messages = response;
-        this.updateScroll();
-      });
-  }
-
-  /**
-   * Evaluate if the message is sent by the current user.
-   */
-  public messageSendByMe(message: Message) {
-    return this.user.uid === message.uid;
-  }
-
-  /**
-   * Send message.
-   */
-  public sendMessage() {
-    console.log(`${MasterComponent.name}::sendMessage`);
-    if (this.newMessage) {
-      const newMessage: Message = {
-        uid: this.user.uid,
-        name: this.user.name,
-        date: new Date(),
-        message: this.newMessage
-      };
-
-      this.firebaseDb.setMessage(newMessage)
-        .then(() => {
-          this.newMessage = '';
-        });
-    }
+  public changeUserSelected(userSelected: User) {
+    this.userSelected = userSelected;
   }
 
   /**
@@ -87,19 +47,7 @@ export class MasterComponent implements OnInit {
       })
       .catch((err) => {
         console.log(`${MasterComponent.name}::catch`, err);
-
       });
-  }
-
-  /**
-   * Update the scroll position.
-   */
-  private updateScroll() {
-    setTimeout(
-      () => {
-        this.element.scrollTop = this.element.scrollHeight;
-      },
-      20);
   }
 
   /**

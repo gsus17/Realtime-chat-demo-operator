@@ -1,0 +1,54 @@
+<div fxLayout="column"
+     class="chat-window"
+     fxFlex>
+  <div fxLayout="row"
+       fxLayoutAlign="space-between center">
+    <img class="avatar"
+         [src]="userAuthenticate.avatar | noimage"
+         alt="avatar">
+
+    <button mat-raised-button
+            color="accent"
+            (click)="logout()">Salir</button>
+  </div>
+
+  <div class="message-general-container"
+       fxFlex
+       id="chat-container">
+    <div *ngFor="let message of messages"
+         class="fxMargin"
+         fxLayout="column">
+      <div fxLayout="column"
+           fxLayoutAlign="{{messageSendByMe(message) ? 'center end' : 'center start'}}"
+           class="message-container">
+        <div class="user-name-container">
+          <span class="user-name"
+                [ngClass]="{'right': messageSendByMe(message), 'left': !messageSendByMe(message)}">{{message.name}}</span>
+        </div>
+        <span class="chat-message">{{message.message}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div fxLayout="row"
+       fxLayoutAlign="space-between center">
+    <mat-form-field fxFlex
+                    class="example-full-width">
+      <input matInput
+             [(ngModel)]="newMessage"
+             placeholder="Escriba su mensaje"
+             value="mensaje"
+             (keyup.enter)="sendMessage()">
+    </mat-form-field>
+
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         fxFlex="10">
+      <button mat-fab
+              (click)="sendMessage()"
+              color="primary">
+        <mat-icon>send</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

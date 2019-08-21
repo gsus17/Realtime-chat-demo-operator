@@ -45,13 +45,13 @@ export class LoginComponent implements OnInit {
   /**
    * Save user login.
    */
-  private saveLocalUser(res: any) {
-    console.log(`${LoginComponent.name}::saveUser`);
+  private saveLocalUser(response: any) {
+    console.log(`${LoginComponent.name}::saveLocalUser`);
 
     const user: User = {
-      uid: res.user.uid,
-      name: res.user.displayName,
-      avatar: res.user.photoURL
+      uid: response.user.uid,
+      name: response.user.displayName,
+      avatar: response.user.photoURL
     };
 
     this.firebaseAuthService.setUser(user);

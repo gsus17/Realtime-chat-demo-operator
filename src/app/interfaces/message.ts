@@ -1,6 +1,11 @@
+/**
+ * Message.
+ */
 export interface Message {
-  uid: string;
+  uidChat?: string;
+  from: string;
   name: string;
   date: Date;
   message: string;
+  to: string;
 }

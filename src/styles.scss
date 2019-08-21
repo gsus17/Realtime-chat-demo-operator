@@ -11,3 +11,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .fxMargin {
   margin: 16px;
 }
+
+// Mediaquery para formulario de una sola columna en xs.
+@media (min-width: 599px) {
+  .login-content { min-width: 500px;  height: auto !important;}
+}

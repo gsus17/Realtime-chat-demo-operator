@@ -1,84 +1,27 @@
 <div fxFlexFill
      fxLayout="column"
-     class="containers"
-     fxLayoutAlign="center center">
-  <div fxLayout="column"
-       fxLayoutAlign="center center">
-    <div fxFlex
-         fxLayout="row"
-         fxLayoutAlign="center center">
-      <span class="mat-title">Realtime chat demo</span>
-    </div>
-    <div fxHide.xs="true"
-         fxFlex
-         fxLayout="row"
-         fxLayoutAlign="center center">
-      <span class="mat-title principal-label"></span>
-    </div>
-  </div>
+     fxLayoutAlign="center center"
+     class="master-general-container">
+  <mat-card class="master-content-container">
+    <mat-drawer-container fxFlexFill
+                          class="containers"
+                          fxFlexLayout="column">
+      <mat-drawer #drawer
+                  class="contents"
+                  [(opened)]="openedSideBar"
+                  [mode]="openedSideBarMode"
+                  class="left-drawer-container">
+        <app-chat-contacts (selectionUser)=changeUserSelected($event)></app-chat-contacts>
+      </mat-drawer>
 
-  <mat-card class="login-content"
-            fxLayout="column">
-    <div class="progress-bar-container">
-      <mat-progress-bar mode="indeterminate"
-                        *ngIf="progressLinear"></mat-progress-bar>
-    </div>
+      <mat-drawer-content fxLayout="column"
+                          (scroll)="onElementScroll($event)">
+        <app-chat-window [userAuthenticate]="userAuthenticate"
+                         [userSelected]="userSelected"
+                         (logoutHandler)="logout()"
+                         fxFlex></app-chat-window>
+      </mat-drawer-content>
 
-    <div fxLayout="column">
-      <div>
-        <img class="avatar"
-             src="{{user.avatar}}"
-             alt="avatar">
-      </div>
-
-      <div class="message-general-container"
-           id="chat-container">
-        <div *ngFor="let message of messages"
-             class="fx-margin"
-             fxLayout="column">
-          <div fxLayout="column"
-               fxLayoutAlign="{{messageSendByMe(message) ? 'center end' : 'center start'}}"
-               class="message-container">
-            <div class="user-name-container">
-              <span class="user-name"
-                    [ngClass]="{'right': messageSendByMe(message), 'left': !messageSendByMe(message)}">{{message.name}}</span>
-            </div>
-            <span class="chat-message">{{message.message}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div fxFlex
-           fxLayout="row"
-           fxLayoutAlign="space-between center">
-        <mat-form-field fxFlex="85%"
-                        class="example-full-width">
-          <input matInput
-                 [(ngModel)]="newMessage"
-                 placeholder="Escriba su mensaje"
-                 value="mensaje"
-                 (keyup.enter)="sendMessage()">
-        </mat-form-field>
-
-        <div>
-          <button mat-fab
-                  (click)="sendMessage()"
-                  color="primary">
-            <mat-icon>send</mat-icon>
-          </button>
-        </div>
-      </div>
-    </div>
+    </mat-drawer-container>
   </mat-card>
-
-  <div class="fxMargin">
-    <span class="version-app">Version 0.0.1</span>
-  </div>
-
-  <div fxLayout="row"
-       fxLayoutAlign="center center">
-    <button mat-raised-button
-            color="accent"
-            (click)="logout()">Salir</button>
-  </div>
 </div>
