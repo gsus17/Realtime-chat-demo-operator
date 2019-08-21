@@ -2,44 +2,59 @@
   <mat-nav-list fxFlex
                 fxLayout="column">
 
-    <div fxLayout="row"
-         class="fxMargin search-chat-container"
-         fxFlex>
-
+    <ng-container *ngIf="(userListToRender.length > 0)">
       <div fxLayout="row"
-           class="search-chat-container">
-        <input [(ngModel)]="searchFilter"
-               (change)="filterList()"
-               class="search-chat-input"
-               type="text"
-               fxFlex
-               placeholder="Buscar o empezar un chat nuevo..">
-      </div>
-    </div>
-
-    <mat-list-item *ngFor="let item of userList"
-                   (click)="selectChat(item)">
-
-      <img [src]="item.avatar | noimage"
-           matListAvatar />
-
-      <div fxLayout="column"
+           class="fxMargin search-chat-container"
            fxFlex>
-        <div class="message-container"
-             fxLayout="row"
-             fxLayoutAlign="space-between center"
-             fsxFlex>
-          <span class="mat-small"> {{item.name}} </span>
-          <span class="mat-small"> 12/03/1997 </span>
-        </div>
 
-        <div class="message-container"
-             fxLayout="row">
-          <span class="mat-small"> Mensaje </span>
+        <div fxLayout="row"
+             fxFlex
+             class="search-chat-container">
+          <input [(ngModel)]="searchFilter"
+                 (keyup)="filterList()"
+                 class="search-chat-input"
+                 type="text"
+                 fxFlex
+                 placeholder="Buscar un chat nuevo...">
         </div>
       </div>
+      <mat-list-item *ngFor="let item of userListToRender"
+                     (click)="selectChat(item)">
 
-      <mat-divider></mat-divider>
-    </mat-list-item>
+        <img [src]="item.avatar | noimage"
+             matListAvatar />
+
+        <div fxLayout="column"
+             fxFlex>
+          <div class="message-container"
+               fxLayout="row"
+               fxLayoutAlign="space-between center"
+               fsxFlex>
+            <span class="mat-small"> {{item.name}} </span>
+            <span class="mat-small"> 12/03/1997 </span>
+
+            <span class="message-unread-count"
+                  *ngIf="item.messageUnread > 0">{{item.messageUnread}}</span>
+          </div>
+
+          <div class="message-container"
+               fxLayout="row">
+            <span class="mat-small"> mensaje </span>
+          </div>
+        </div>
+
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </ng-container>
+
+    <ng-container *ngIf="!(userListToRender.length > 0)">
+      <div fxLayout="column"
+           fxLayoutAlign="center center">
+        <img src="assets/img/no-results-persona.png"
+             alt="">
+
+        <span>No hay usuarios en linea</span>
+      </div>
+    </ng-container>
   </mat-nav-list>
 </div>

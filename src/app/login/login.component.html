@@ -8,7 +8,7 @@
     <div fxFlex
          fxLayout="row"
          fxLayoutAlign="center center">
-      <span class="mat-title">Realtime chat demo</span>
+      <span class="mat-title">Realtime chat demo (operators)</span>
     </div>
     <div fxHide.xs="true"
          fxFlex
@@ -39,20 +39,13 @@
         <button fxFlex
                 mat-raised-button
                 color="primary"
-                (click)="goToMaster()">Prueba</button>
-      </div>
-      <div fxFlex
-           fxLayout="row"
-           class="fxMargin">
-        <button fxFlex
-                mat-raised-button
-                color="primary"
                 (click)="googleLogin()">Google</button>
       </div>
       <div fxFlex
            fxLayout="row"
            class="fxMargin">
         <button fxFlex
+                [disabled]="true"
                 mat-raised-button
                 color="accent"
                 (click)="twitterLogin()">Twitter</button>

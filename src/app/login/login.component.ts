@@ -51,7 +51,8 @@ export class LoginComponent implements OnInit {
     const user: User = {
       uid: response.user.uid,
       name: response.user.displayName,
-      avatar: response.user.photoURL
+      avatar: response.user.photoURL,
+      messageUnread: 0
     };
 
     this.firebaseAuthService.setUser(user);

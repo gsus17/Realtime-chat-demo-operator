@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Message } from '../../interfaces/message';
 import { Observable } from 'rxjs';
+import { User } from 'src/app/interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -56,6 +57,17 @@ export class FirebaseDBService {
       .collection('chats')
       .doc(newId)
       .set(message);
+  }
+
+  /**
+   * Update message unread.
+   */
+  public updateMessageUnread(user: User) {
+    console.log(`${FirebaseDBService.name}::updateMessageUnread`);
+    user.messageUnread = 0;
+    this.db
+      .doc(`users/${user.uid}`)
+      .update(user);
   }
 
   /**

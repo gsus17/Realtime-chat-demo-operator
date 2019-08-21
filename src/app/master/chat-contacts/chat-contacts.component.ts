@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output, OnDestroy } from '@angular/core';
-import { User } from 'firebase';
 import { FirebaseDBService } from '../firebase-db/firebase-db.service';
 import { Subscription } from 'rxjs';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-chat-contacts',
@@ -11,6 +11,8 @@ import { Subscription } from 'rxjs';
 export class ChatContactsComponent implements OnInit, OnDestroy {
 
   public userList: User[] = [];
+  public searchFilter = '';
+  public userListToRender: User[] = [];
 
   @Output()
   public selectionUser = new EventEmitter();
@@ -25,7 +27,21 @@ export class ChatContactsComponent implements OnInit, OnDestroy {
   public ngOnInit() {
 
     this.subscriptionReference = this.db.getConversations$()
-      .subscribe((data) => this.userList = data);
+      .subscribe((data: User[]) => {
+        this.userList = data;
+        this.userListToRender = data;
+      });
+  }
+
+  /**
+   * Filter list.
+   */
+  public filterList() {
+    if (this.searchFilter !== undefined && this.searchFilter !== '') {
+      this.userListToRender = this.userList.filter((user: User) => user.name.toLowerCase().indexOf(this.searchFilter.toLowerCase()) > -1);
+    } else {
+      this.userListToRender = this.userList;
+    }
   }
 
   /**

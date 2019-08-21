@@ -67,3 +67,18 @@
 .chat-window{
   padding: 16px;
 }
+
+.user-name-label {
+  padding-left: 8px;
+}
+
+.message-input {
+  border-radius: 20px;
+  height: 40px;
+  border-width: 1px;
+  padding: 16px;
+}
+
+input:focus {
+  outline: none;
+}

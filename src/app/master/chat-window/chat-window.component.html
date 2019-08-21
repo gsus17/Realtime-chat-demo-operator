@@ -3,9 +3,14 @@
      fxFlex>
   <div fxLayout="row"
        fxLayoutAlign="space-between center">
-    <img class="avatar"
-         [src]="userAuthenticate.avatar | noimage"
-         alt="avatar">
+    <div fxLayout="row"
+         fxLayoutAlign="start center">
+      <img class="avatar"
+           [src]="userSelected.avatar | noimage"
+           alt="avatar">
+
+      <span class="user-name-label">{{userSelected.name}}</span>
+    </div>
 
     <button mat-raised-button
             color="accent"
@@ -32,14 +37,13 @@
 
   <div fxLayout="row"
        fxLayoutAlign="space-between center">
-    <mat-form-field fxFlex
-                    class="example-full-width">
-      <input matInput
-             [(ngModel)]="newMessage"
-             placeholder="Escriba su mensaje"
-             value="mensaje"
-             (keyup.enter)="sendMessage()">
-    </mat-form-field>
+    <input matInput
+           fxFlex
+           [(ngModel)]="newMessage"
+           placeholder="Escriba su mensaje"
+           class="message-input"
+           value="mensaje"
+           (keyup.enter)="sendMessage()">
 
     <div fxLayout="row"
          fxLayoutAlign="center center"

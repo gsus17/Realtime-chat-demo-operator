@@ -16,7 +16,8 @@
 
       <mat-drawer-content fxLayout="column"
                           (scroll)="onElementScroll($event)">
-        <app-chat-window [userAuthenticate]="userAuthenticate"
+        <app-chat-window *ngIf="userSelected !== null"
+                         [userAuthenticate]="userAuthenticate"
                          [userSelected]="userSelected"
                          (logoutHandler)="logout()"
                          fxFlex></app-chat-window>

@@ -41,6 +41,7 @@ export class ChatWindowComponent implements OnInit, OnChanges {
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes.userSelected.currentValue !== null) {
       this.loadMessages();
+      this.updateMessageUnread();
     }
   }
 
@@ -67,6 +68,10 @@ export class ChatWindowComponent implements OnInit, OnChanges {
           this.updateScroll();
         });
     }
+  }
+  public updateMessageUnread() {
+    console.log(`${ChatWindowComponent.name}::loadMessages`);
+    this.firebaseDb.updateMessageUnread(this.userSelected);
   }
 
   /**
