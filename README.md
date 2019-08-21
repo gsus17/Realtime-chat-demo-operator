@@ -1,18 +1,30 @@
-# RealtimeChatDemoOperators
+# About RealtimeChatDemoOperators 
+Real time chat demo operators is a proyect to simulate a realtime chat with multiples users, applying all standars.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.1.
+# Important
+* This is a complementary project to RealtimeChatDemoUser
 
-## Development server
+# Applied Standards
+* Code standar.
+* Observables implementation.
+* Angular Material components.
+* Angular Guard login protection.
+* Firebase connection
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# Technology
+* Angular v8
+* Angular Material v8
+* Firebase Database (Firestore)
+* Firebase Authentication with Google and Twitter accounts.
 
-## Code scaffolding
+# Demo
+* https://gsus17.github.io/Realtime-chat-demo-operator/
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Quickstart
+Run `npm install` 
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+# Run app
+Run `ng serve --o`  for init the app.
 
 ## Running unit tests
 
@@ -22,6 +34,8 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+# Author
+* https://github.com/gsus17
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## License
+*This is a simple open-source software licensed under the MIT license.*
