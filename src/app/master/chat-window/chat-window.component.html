@@ -39,6 +39,7 @@
        fxLayoutAlign="space-between center">
     <input matInput
            fxFlex
+           fxFlex.xs="60"
            [(ngModel)]="newMessage"
            placeholder="Escriba su mensaje"
            class="message-input"
@@ -47,7 +48,7 @@
 
     <div fxLayout="row"
          fxLayoutAlign="center center"
-         fxFlex="10">
+         fxFlex="15">
       <button mat-fab
               (click)="sendMessage()"
               color="primary">
